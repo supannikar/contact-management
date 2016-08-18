@@ -17,8 +17,8 @@ public class CISDetailResponseTransportMapper {
         transport.setEmail(model.getEmail());
         transport.setPhone(model.getPhone());
         transport.setGroupId(model.getGroupId());
-        transport.setModifiedTime(model.getModifiedTime() != null ?
-                DateTimeFormatUtil.dateToISO8601String(model.getModifiedTime().toDate()) : null);
+//        transport.setModifiedTime(model.getModifiedTime() != null ?
+//                DateTimeFormatUtil.dateToISO8601String(model.getModifiedTime().toDate()) : null);
         return transport;
     }
 

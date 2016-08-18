@@ -12,12 +12,7 @@ public class CISGroupRequestTransportMapper {
         CISGroupModel model = new CISGroupModel();
         model.setId(transport.getId());
         model.setName(transport.getName());
-
-        if(StringUtils.isNotBlank(transport.getModifiedTime())) {
-            model.setModifiedTime(DateTimeFormatUtil.fromISO8601String(transport.getModifiedTime()));
-        } else {
-            model.setModifiedTime(DateTime.now());
-        }
+        model.setClickCount(transport.getClickCount());
 
         return model;
     }

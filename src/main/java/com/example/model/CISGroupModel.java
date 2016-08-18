@@ -7,5 +7,6 @@ import org.joda.time.DateTime;
 public class CISGroupModel {
     private Long id;
     private String name;
-    private DateTime modifiedTime;
+//    private DateTime modifiedTime;
+    private Long clickCount;
 }

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dao.CISGroupDao;
 import com.example.model.CISGroupModel;
+import com.example.query.CISGroupQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,18 @@ public class CISGroupService {
 
     public List<CISGroupModel> listAll(){
         return cisGroupDao.listAll();
+    }
+
+    public List<CISGroupModel> groupByName(){
+        return cisGroupDao.groupByName();
+    }
+
+    public List<CISGroupModel> queryCISGroup(CISGroupQuery cisGroupQuery){
+        return cisGroupDao.queryCISGroup(cisGroupQuery);
+    }
+
+    public int countCISGroup(CISGroupQuery cisGroupQuery){
+        return cisGroupDao.countCISGroup(cisGroupQuery);
     }
 
     public void delete(Integer id){

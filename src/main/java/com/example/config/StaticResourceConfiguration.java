@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 public class StaticResourceConfiguration extends WebMvcConfigurerAdapter {
-    private static final String CLASSPATH_RESOURCE_LOCATIONS = "classpath:/static/cis/";
+    private static final String CLASSPATH_RESOURCE_LOCATIONS = "classpath:/static/contact-management/";
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

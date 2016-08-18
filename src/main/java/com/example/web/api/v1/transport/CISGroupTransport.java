@@ -9,8 +9,11 @@ public class CISGroupTransport {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("modified_time")
-    private String modifiedTime;
+//    @JsonProperty("modified_time")
+//    private String modifiedTime;
+
+    @JsonProperty("click_count")
+    private Long clickCount = 0L;
 
     public Long getId() {
         return id;
@@ -28,11 +31,19 @@ public class CISGroupTransport {
         this.name = name;
     }
 
-    public String getModifiedTime() {
-        return modifiedTime;
+//    public String getModifiedTime() {
+//        return modifiedTime;
+//    }
+//
+//    public void setModifiedTime(String modifiedTime) {
+//        this.modifiedTime = modifiedTime;
+//    }
+
+    public Long getClickCount() {
+        return clickCount;
     }
 
-    public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+    public void setClickCount(Long clickCount) {
+        this.clickCount = clickCount;
     }
 }

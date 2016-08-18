@@ -18,11 +18,11 @@ public class CISDetailRequestTransportMapper {
         model.setPhone(transport.getPhone());
         model.setGroupId(transport.getGroupId());
 
-        if(StringUtils.isNotBlank(transport.getModifiedTime())) {
-            model.setModifiedTime(DateTimeFormatUtil.fromISO8601String(transport.getModifiedTime()));
-        } else {
-            model.setModifiedTime(DateTime.now());
-        }
+//        if(StringUtils.isNotBlank(transport.getModifiedTime())) {
+//            model.setModifiedTime(DateTimeFormatUtil.fromISO8601String(transport.getModifiedTime()));
+//        } else {
+//            model.setModifiedTime(DateTime.now());
+//        }
 
         return model;
     }

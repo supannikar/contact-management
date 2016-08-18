@@ -18,8 +18,8 @@ public class CISDetailTransport {
     @JsonProperty("group_id")
     private Long groupId;
 
-    @JsonProperty("modified_time")
-    private String modifiedTime;
+//    @JsonProperty("modified_time")
+//    private String modifiedTime;
 
     public Long getId() {
         return id;
@@ -61,12 +61,12 @@ public class CISDetailTransport {
         this.groupId = groupId;
     }
 
-    public String getModifiedTime() {
-        return modifiedTime;
-    }
-
-    public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
-    }
+//    public String getModifiedTime() {
+//        return modifiedTime;
+//    }
+//
+//    public void setModifiedTime(String modifiedTime) {
+//        this.modifiedTime = modifiedTime;
+//    }
 
 }

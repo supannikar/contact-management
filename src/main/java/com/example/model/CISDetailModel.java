@@ -10,5 +10,5 @@ public class CISDetailModel {
     private String email;
     private String phone;
     private Long groupId;
-    private DateTime modifiedTime;
+//    private DateTime modifiedTime;
 }

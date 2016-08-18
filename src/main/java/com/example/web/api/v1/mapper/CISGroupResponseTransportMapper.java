@@ -13,8 +13,9 @@ public class CISGroupResponseTransportMapper {
         CISGroupTransport transport = new CISGroupTransport();
         transport.setId(model.getId());
         transport.setName(model.getName());
-        transport.setModifiedTime(model.getModifiedTime() != null ?
-                DateTimeFormatUtil.dateToISO8601String(model.getModifiedTime().toDate()) : null);
+        transport.setClickCount(model.getClickCount());
+//        transport.setModifiedTime(model.getModifiedTime() != null ?
+//                DateTimeFormatUtil.dateToISO8601String(model.getModifiedTime().toDate()) : null);
         return transport;
     }
 

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dao.CISDetailDao;
 import com.example.model.CISDetailModel;
+import com.example.query.CISDetailQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,14 @@ public class CISDetailService {
 
     public List<CISDetailModel> listAll(){
         return cisDetailDao.listAll();
+    }
+
+    public List<CISDetailModel> queryCISDetail(CISDetailQuery cisDetailQuery){
+        return cisDetailDao.queryCISDetail(cisDetailQuery);
+    }
+
+    public int countCISDetail(CISDetailQuery cisDetailQuery){
+        return cisDetailDao.countAdObject(cisDetailQuery);
     }
 
     public void delete(Integer id){
