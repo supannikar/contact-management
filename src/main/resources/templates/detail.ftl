@@ -57,7 +57,7 @@
                                 <label class="strong">Group: </label>
                             </div>
                             <div class="att_col2">
-                                <input type="text" name="groupid" />
+                                <input type="text" name="groupid" value="${id}"/>
                             </div>
                         </div>
                         <div class="body_row">
@@ -96,7 +96,7 @@
             }
         }
 
-        function goAdd(id){
+        function goEdit(id){
 //            $("btnEdit").click(function(){
             var items = [];
             $("input:checkbox[name='itemId']:checked").each(function(){
@@ -122,12 +122,14 @@
         }
 
         $(document).ready( function () {
-            $.getJSON("http://localhost:8091/api/cis/v1/cisdetails", {format: "json"})
+            var $form = $( this ),
+                    id = $form.find( "input[name='groupid']" ).val();
+            $.getJSON("http://localhost:8091/api/cis/v1/cisgroups/" + id + "/detail", {format: "json"})
                     .done(function(data) {
                         var trHTML = '';
                         var tableHTML = '<table id = "tbResult"> <thead> <tr>' +
                                 '<th><input type="checkbox" id="selectall" onclick="checkAll(this);"/></th>' +
-                                '<th>Name</th>' + '<th>Email</th>' + '<th>Phone</th>' + '<th><img src="images/icon-edit.png" alt="Edit Icon"/></th> </tr>'
+                                '<th>Name</th>' + '<th>Email</th>' + '<th>Phone</th>' + '<th></th> </tr>'
                                 + '</thead> <tbody> </tbody>' +
                                 '</table> <input type="submit" value="Delete" class="btn_gray"/> ';
                         $.each(data.result, function(i, item) {
@@ -137,7 +139,7 @@
                                     '<td>' + item.name + '</td><td>'
                                     + item.email + '</td><td>'
                                     + item.phone + '</td><td>'
-                                    + '<input class="icon_edit_btn" id="btnEdit" type="button" onclick="goAdd();" /></td></tr>';
+                                    + '<input class="icon_edit_btn" id="btnEdit" type="button" onclick="goEdit();" /></td></tr>';
                         });
                         if(data.count != 0){
                             document.getElementById("ItemGroupDetailList").innerHTML = tableHTML;
@@ -162,6 +164,7 @@
                         type: "DELETE",
                         success: function(result) {
                             location.reload();
+//                            window.location = "http://localhost:8091/api/cis/groups/" + groupid + "/detail"
                         },
                         statusCode: {
                             400: function() {
@@ -193,7 +196,8 @@
                     contentType: 'application/json',
                     data: JSON.stringify(jsonData),
                     success: function(result) {
-                        location.reload();
+//                        location.reload();
+                        window.location = "http://localhost:8091/api/cis/groups/" + groupid + "/detail"
                     },
                     statusCode: {
                         400: function() {

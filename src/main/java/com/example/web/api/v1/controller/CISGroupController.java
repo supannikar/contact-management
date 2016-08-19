@@ -1,11 +1,14 @@
 package com.example.web.api.v1.controller;
 
+import com.example.model.CISDetailModel;
 import com.example.model.CISGroupModel;
 import com.example.query.CISGroupQuery;
 import com.example.service.CISGroupService;
+import com.example.web.api.v1.mapper.CISDetailResponseTransportMapper;
 import com.example.web.api.v1.mapper.CISGroupDetailResponseTransportMapper;
 import com.example.web.api.v1.mapper.CISGroupRequestTransportMapper;
 import com.example.web.api.v1.mapper.CISGroupResponseTransportMapper;
+import com.example.web.api.v1.transport.CISDetailTransport;
 import com.example.web.api.v1.transport.CISGroupResponseTransport;
 import com.example.web.api.v1.transport.CISGroupTransport;
 import com.example.web.api.v1.transport.ResponseTransport;
@@ -26,7 +29,7 @@ import java.util.List;
 @RequestMapping(value = "/api/cis/v1/cisgroups", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CISGroupController {
     private static final Logger LOG = LoggerFactory.getLogger(CISGroupController.class);
-    private static final String DEFAULT_RESPONSE_LIMIT = "5";
+    private static final String DEFAULT_RESPONSE_LIMIT = "50";
     private static final String DEFAULT_OFFSET = "0";
 
     @Autowired
@@ -57,6 +60,14 @@ public class CISGroupController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public CISGroupTransport findById(@PathVariable Long id) {
         return new CISGroupResponseTransportMapper().map(cisGroupService.findById(id));
+    }
+
+    @RequestMapping(value = "/{id}/detail",method = RequestMethod.GET)
+    public ResponseTransport<CISDetailTransport> findListById(@PathVariable Long id) {
+
+        List<CISDetailModel> listAll = cisGroupService.groupByName(id);
+        List<CISDetailTransport> transports = new CISDetailResponseTransportMapper().maps(listAll);
+        return new ResponseTransport<>(transports.size(), transports.size(), transports);
     }
 
     @RequestMapping(method = RequestMethod.GET)

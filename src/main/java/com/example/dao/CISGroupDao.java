@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import com.example.model.CISDetailModel;
 import com.example.model.CISGroupModel;
 import com.example.query.CISGroupQuery;
 import org.apache.commons.lang3.StringUtils;
@@ -42,21 +43,22 @@ public class CISGroupDao {
                 "FROM cisgroup WHERE id = ?", new CISGroupModelRowMapper(), id);
     }
 
-    public List<CISGroupModel> groupByName(){
-        String sql = "SELECT g.id, g.name, COUNT(d.id) as detail_no " +
+    public List<CISDetailModel> groupByName(Long id){
+        String sql = "SELECT d.id, d.name, d.email, d.phone, d.group_id " +
                 "FROM cisgroup g INNER JOIN cisdetail d ON g.id = d.group_id " +
-                "GROUP BY g.id, g.name";
+                "WHERE g.id = ?";
 
-        List<Map<String, Object>> res = jdbcTemplate.queryForList(sql);
-        List<CISGroupModel> cisGroupModels = new ArrayList<>();
+        List<Map<String, Object>> res = jdbcTemplate.queryForList(sql, id);
+        List<CISDetailModel> cisGroupModels = new ArrayList<>();
         if(res == null || res.size() == 0){
             return cisGroupModels;
         }
         res.stream().forEach(row -> {
-            CISGroupModel model = new CISGroupModel();
+            CISDetailModel model = new CISDetailModel();
             model.setId((Long) row.get("id"));
             model.setName((String) row.get("name"));
-            model.setClickCount((Long) row.get("detail_no"));
+            model.setEmail((String) row.get("email"));
+            model.setPhone((String) row.get("phone"));
             cisGroupModels.add(model);
         });
 

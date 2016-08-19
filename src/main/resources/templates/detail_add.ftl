@@ -123,7 +123,8 @@ $( "#addNewDetail" ).submit(function( event ) {
         contentType: "application/json; charset=UTF-8",
         success: function (data) {
             alert("Save success !!!");
-            window.location = "http://localhost:8091/api/cis/details";
+//            window.location = "http://localhost:8091/api/cis/details";
+            window.location = "http://localhost:8091/api/cis/groups/" + groupid + "/detail"
         },
         statusCode: {
             400: function() {

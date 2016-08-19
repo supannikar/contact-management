@@ -28,8 +28,14 @@ public class GroupController {
     }
 
     @RequestMapping(value = "/api/cis/details", method = RequestMethod.GET, produces = TEXT_HTML_VALUE)
-    public String getDetailLisyPage() {
+    public String getDetailListPage() {
         LOGGER.info("Get Detail List page");
+        return "detail";
+    }
+
+    @RequestMapping(value = "/api/cis/groups/{id}/detail", method = RequestMethod.GET, produces = TEXT_HTML_VALUE)
+    public String getDetailByGroup(Model model, @PathVariable Long id){
+        model.addAttribute("id", id);
         return "detail";
     }
 

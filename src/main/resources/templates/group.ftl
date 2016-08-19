@@ -94,50 +94,44 @@
         }
 
         function gotoDetail(id){
-            alert(id);
-//            $(document).ready( function () {
+            $(document).ready( function () {
 //
-//                $.getJSON("http://localhost:8091/api/cis/v1/cisgroups/" + id, {format: "json"})
-//                    .done(function (data) {
-////                        $("#groupname_id").val(data.name);
-//                        var name = data.name;
-//                        var count = data.click_count + 1;
-//
-//                        if (name != undefined && name != null) {
-//                            window.location = 'http://localhost:8091/api/cis/groupadd?id=' + items
-//                                    + '&name=' + name
-//                                    + '&count=' + count;
-//                        }
-//
-//                        var jsonData = { id: detailid, name: detailname, email: detailemail, phone: detailphone, group_id: groupid};
-//
-//                        $.ajax({
-//                            type : "PUT",
-//                            url : url,
-//                            data: JSON.stringify(jsonData),
-//                            dataType: "json",
-//                            contentType: "application/json; charset=UTF-8",
-//                            success: function (data) {
-//                                alert("Save success !!!");
-//                                window.location = "http://localhost:8091/api/cis/details";
-//                            },
-//                            statusCode: {
-//                                400: function() {
-//                                    // if your server return 400 status code then only it comes in this block. :-)
-//                                    alert("Something wrong!");
-//                                },
-//                                500: function(){
-//                                    alert("Datetime format incorrect!");
-//                                },
-//                                401: function(){
-//                                    alert("Unauthorization!");
-//                                }
-//                            }
-//
-//                        });
-//
-//                    });
-//            });
+                $.getJSON("http://localhost:8091/api/cis/v1/cisgroups/" + id, {format: "json"})
+                    .done(function (data) {
+                        var name = data.name;
+                        var count = data.click_count + 1;
+                        var url = "/api/cis/v1/cisgroups/" + id;
+                        var redirectUrl = "/api/cis/groups/" + id + "/detail";
+                        alert("redirect: " + redirectUrl);
+                        var jsonData = { id: id, name: name, click_count: count};
+
+                        $.ajax({
+                            type : "PUT",
+                            url : url,
+                            data: JSON.stringify(jsonData),
+                            dataType: "json",
+                            contentType: "application/json; charset=UTF-8",
+                            success: function (data) {
+                                alert("Save success !!!");
+                                window.location = redirectUrl;
+                            },
+                            statusCode: {
+                                400: function() {
+                                    // if your server return 400 status code then only it comes in this block. :-)
+                                    alert("Something wrong!");
+                                },
+                                500: function(){
+                                    alert("Datetime format incorrect!");
+                                },
+                                401: function(){
+                                    alert("Unauthorization!");
+                                }
+                            }
+
+                        });
+
+                    });
+            });
         }
 
 
@@ -154,7 +148,7 @@
                             trHTML += '<tr><td class="col8 align_center">' +
                                     '<input type="checkbox" class="check" id="itm' + item.id
                                     +'" value="'+ item.id +'"name = "itemId"/></td>' +
-                                    '<td onclick="gotoDetail(item.id);">' + item.name + '</td><td>'
+                                    '<td onclick= "gotoDetail(' + item.id + ');">' + item.name + '</td><td>'
                                     + item.click_count + '</td><td>'
                                     + '<input class="icon_edit_btn" id="btnEdit" type="button" onclick="goAdd();" /></td></tr>';
                         });

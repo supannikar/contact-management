@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping(value = "/api/cis/v1/cisdetails", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CISDetailController {
     private static final Logger LOG = LoggerFactory.getLogger(CISDetailController.class);
-    private static final String DEFAULT_RESPONSE_LIMIT = "5";
+    private static final String DEFAULT_RESPONSE_LIMIT = "50";
     private static final String DEFAULT_OFFSET = "0";
     @Autowired
     private CISDetailService cisDetailService;

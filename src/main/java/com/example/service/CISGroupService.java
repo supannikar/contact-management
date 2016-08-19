@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dao.CISGroupDao;
+import com.example.model.CISDetailModel;
 import com.example.model.CISGroupModel;
 import com.example.query.CISGroupQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class CISGroupService {
         return cisGroupDao.listAll();
     }
 
-    public List<CISGroupModel> groupByName(){
-        return cisGroupDao.groupByName();
+    public List<CISDetailModel> groupByName(Long id){
+        return cisGroupDao.groupByName(id);
     }
 
     public List<CISGroupModel> queryCISGroup(CISGroupQuery cisGroupQuery){
