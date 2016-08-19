@@ -102,7 +102,6 @@
                         var count = data.click_count + 1;
                         var url = "/api/cis/v1/cisgroups/" + id;
                         var redirectUrl = "/api/cis/groups/" + id + "/detail";
-                        alert("redirect: " + redirectUrl);
                         var jsonData = { id: id, name: name, click_count: count};
 
                         $.ajax({
